@@ -1,0 +1,1 @@
+void triplica(float f);
