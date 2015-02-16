@@ -10,14 +10,16 @@ int main(int argc, char** argv) {
     char nome[NOME_MAXLEN+1];
     int reti;
     int nSquadre = 0;
-    int i;
+    int i;    
+    struct squadra *lista;
+    int dimensione;
     
     // SEZIONE 1 ------------------------------------------
     // ----------------------------------------------------
     printf("Inserisci un valore decimale da triplicare: ");
     scanf("%f", &f);
     // TODO Correggi l'implementazione della procedura raddoppia
-    triplica(f);
+    triplica(&f);
     printf("Il valore triplicato è: %f\n", f);
     
     // SEZIONE 2 ------------------------------------------
@@ -32,6 +34,10 @@ int main(int argc, char** argv) {
         
         // TODO Inserisci qui codice e chiamata alla funzione per l'aggiunta della squadra
         // nella memoria dinamica (vedi squadra.h)
+        if(aggiungiSquadra(&lista, &nSquadre, &dimensione, nome, reti)) {
+            fprintf(stderr, "Si è verificato un errore nell'allocazione di memoria.\n");
+            exit(-1);
+        }
         
         printf("Vuoi aggiungere un'altra squadra? (s/n) ");
         getchar();  // Non modificare (buffered read)
@@ -42,8 +48,8 @@ int main(int argc, char** argv) {
     // TODO Modifica il codice seguente per eseguire quanto richiesto.
     // TODO Aggiungi eventuali funzioni a tuo piacimento
     printf("\nStampa degli elementi in ordine inverso rispetto all'inserimento\n");
-    for(i=0; i<nSquadre; i++) {
-        printf("%s; %d\n", nome, reti);
+    for(i=nSquadre-1; i>=0; i--) {
+        printf("%s; %d\n", lista[i].nome, lista[i].reti);
     }
     
     return (EXIT_SUCCESS);

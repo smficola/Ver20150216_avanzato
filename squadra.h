@@ -1,4 +1,4 @@
-#define NOME_MAXLEN 10
+#define NOME_MAXLEN 30
 
 struct squadra {
     char nome[NOME_MAXLEN+1];

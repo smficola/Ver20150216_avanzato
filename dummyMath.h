@@ -1,1 +1,1 @@
-void triplica(float f);
+void triplica(float *f);
